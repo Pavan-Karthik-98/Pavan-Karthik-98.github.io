@@ -89,4 +89,5 @@ btnHold.addEventListener("click", function () {
   }
 });
 
+//Code to restart the game when clicked on New Game button
 btnNew.addEventListener("click", init);
