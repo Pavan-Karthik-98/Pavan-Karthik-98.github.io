@@ -132,6 +132,7 @@ ul {
   display: inline-block;
   white-space: nowrap;
   border: none;
+  cursor: pointer;
   background: var(--skin-color);
   transition: all 0.3s ease;
 }
