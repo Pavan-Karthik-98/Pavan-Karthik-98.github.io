@@ -105,10 +105,8 @@
 
     <script>
       function copyUrl(inputId, btn) {
-        const input = document.getElementById(inputId);
-        input.select();
-        input.setSelectionRange(0, 99999); // For mobile
-        navigator.clipboard.writeText(input.value).then(() => {
+        const text = document.getElementById(inputId).value;
+        navigator.clipboard.writeText(text).then(() => {
           btn.textContent = "Copied!";
           btn.classList.add("copied");
           setTimeout(() => {
