@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Copy Boxes</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #ece9e6, #ffffff);
+        padding: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 600px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .url-box {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      @media (min-width: 600px) {
+        .url-box {
+          flex-direction: row;
+          align-items: center;
+        }
+      }
+
+      input[type="text"] {
+        flex: 1;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 1rem;
+      }
+
+      button {
+        padding: 0.75rem 1.2rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      .copied {
+        background-color: #28a745 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="url-box">
+        <label>LinkedIn</label>
+        <input
+          type="text"
+          id="url1"
+          value="https://www.linkedin.com/in/pavan-karthik-ramapuram/"
+          disabled
+        />
+        <button onclick="copyUrl('url1', this)">Copy</button>
+      </div>
+      <div class="url-box">
+        <label>GitHub</label>
+        <input
+          type="text"
+          id="url2"
+          value="https://www.linkedin.com/in/pavan-karthik-ramapuram/"
+          disabled
+        />
+        <button onclick="copyUrl('url2', this)">Copy</button>
+      </div>
+      <div class="url-box">
+        <label>Portfolio</label>
+        <input
+          type="text"
+          id="url3"
+          value="https://pavan-karthik-98.github.io/Portfolio/"
+          disabled
+        />
+        <button onclick="copyUrl('url3', this)">Copy</button>
+      </div>
+    </div>
+
+    <script>
+      function copyUrl(inputId, btn) {
+        const input = document.getElementById(inputId);
+        input.select();
+        input.setSelectionRange(0, 99999); // For mobile
+        navigator.clipboard.writeText(input.value).then(() => {
+          btn.textContent = "Copied!";
+          btn.classList.add("copied");
+          setTimeout(() => {
+            btn.textContent = "Copy";
+            btn.classList.remove("copied");
+          }, 1500);
+        });
+      }
+    </script>
+  </body>
+</html>
